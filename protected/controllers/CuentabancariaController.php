@@ -73,9 +73,26 @@ class CuentabancariaController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->NumeroDeCuenta));
 		}
+                
+                 $sq = "SELECT O.idOficina, O.Lugar_idLugar, l.Nombre
+                    FROM oficina O
+                    JOIN lugar l ON O.Lugar_idLugar = l.idLugar
+                    ORDER BY O.Lugar_idLugar ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $data3= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($data3 as $value) {
+                    $aux[$value['idOficina']] = $value['Nombre'];
+                }
+                
+                $data3 = $aux;
+                //var_dump($data3);die;
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'data3'=>$data3,
+                    
 		));
 	}
 
@@ -97,9 +114,25 @@ class CuentabancariaController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->NumeroDeCuenta));
 		}
+                  $sq = "SELECT O.idOficina, O.Lugar_idLugar, l.Nombre
+                    FROM oficina O
+                    JOIN lugar l ON O.Lugar_idLugar = l.idLugar
+                    ORDER BY O.Lugar_idLugar ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $data3= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($data3 as $value) {
+                    $aux[$value['idOficina']] = $value['Nombre'];
+                }
+                
+                $data3 = $aux;
+                //var_dump($data3);die;
+
 
 		$this->render('update',array(
 			'model'=>$model,
+                        'data3'=>$data3,
 		));
 	}
 

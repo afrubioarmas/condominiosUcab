@@ -73,9 +73,23 @@ class PagosprogramadosController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idPagosProgramados));
 		}
+                 $sq = "SELECT e.RIF, e.Nombre
+                    FROM edificio e
+                    ORDER BY e.Nombre ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $edificios= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($edificios as $value) {
+                    $aux[$value['RIF']] = $value['Nombre'];
+                }
+                $edificios = $aux;
+                //var_dump($data3);die;
+                
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'edificios'=>$edificios,
 		));
 	}
 
@@ -97,9 +111,22 @@ class PagosprogramadosController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idPagosProgramados));
 		}
+                 $sq = "SELECT e.RIF, e.Nombre
+                    FROM edificio e
+                    ORDER BY e.Nombre ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $edificios= $co->queryAll();   
+                //var_dump($edificios);die;
+                foreach ($edificios as $value) {
+                    $aux[$value['RIF']] = $value['Nombre'];
+                }
+                $edificios = $aux;
+                //var_dump($edificios);die;
 
 		$this->render('update',array(
 			'model'=>$model,
+                        'edificios'=>$edificios,
 		));
 	}
 

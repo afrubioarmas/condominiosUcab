@@ -73,9 +73,24 @@ class AreacomunController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idAreaComun));
 		}
+                
+                 $sq = "SELECT e.RIF, e.Nombre
+                    FROM edificio e
+                    ORDER BY e.Nombre ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $data3= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($data3 as $value) {
+                    $aux[$value['RIF']] = $value['Nombre'];
+                }
+                $data3 = $aux;
+                //var_dump($data3);die;
+                
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'data3'=>$data3,
 		));
 	}
 
@@ -97,9 +112,22 @@ class AreacomunController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idAreaComun));
 		}
+                 $sq = "SELECT e.RIF, e.Nombre
+                    FROM edificio e
+                    ORDER BY e.Nombre ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $data3= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($data3 as $value) {
+                    $aux[$value['RIF']] = $value['Nombre'];
+                }
+                $data3 = $aux;
+                //var_dump($data3);die;
 
 		$this->render('update',array(
 			'model'=>$model,
+                        'data3'=>$data3,
 		));
 	}
 

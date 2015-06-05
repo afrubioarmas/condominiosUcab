@@ -18,4 +18,4 @@ $this->menu=array(
 
 <h1>Update Pagosprogramados <?php echo $model->idPagosProgramados; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'edificios'=>$edificios)); ?>

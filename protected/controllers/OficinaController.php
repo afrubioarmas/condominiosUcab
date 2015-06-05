@@ -73,10 +73,15 @@ class OficinaController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idOficina));
 		}
+                
+                
 
 		$this->render('create',array(
 			'model'=>$model,
 		));
+                
+                
+           
 	}
 
 	/**

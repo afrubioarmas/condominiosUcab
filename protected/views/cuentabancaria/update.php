@@ -18,4 +18,4 @@ $this->menu=array(
 
 <h1>Update Cuentabancaria <?php echo $model->NumeroDeCuenta; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'data3'=>$data3)); ?>
