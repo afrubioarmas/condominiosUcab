@@ -74,8 +74,25 @@ class ActareunionController extends Controller
 				$this->redirect(array('view','id'=>$model->idActaReunion));
 		}
 
+                $sql = "SELECT e.RIF, e.Nombre
+                    FROM edificio e
+                    ORDER BY e.Nombre ASC";
+                $com = Yii::app()->db->createCommand($sql);
+                
+                $data = $com->queryAll();   
+                //var_dump($data);die;
+                foreach ($data as $value) {
+                    $aux[$value['RIF']] = $value['Nombre'];
+                }
+                $edificios = $aux;
+                //var_dump($edificios);die;
+                
+                
+                
+                
 		$this->render('create',array(
 			'model'=>$model,
+                        'edificios'=>$edificios,
 		));
 	}
 

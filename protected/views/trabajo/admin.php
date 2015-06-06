@@ -53,9 +53,6 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'Mejora',
 		/*
 		'AsambleaExtraordinaria_idAsambleaExtraordinaria',
-		'AsambleaExtraordinaria_TrabajadorEmpresa_Cedula',
-		'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina',
-		'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF',
 		'CartaConsulta_idCartaConsulta',
 		'Servicio_idServicio',
 		'Servicio_Proveedor_RIF',

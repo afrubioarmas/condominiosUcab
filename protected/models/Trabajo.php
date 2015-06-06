@@ -11,9 +11,6 @@
  * @property integer $PagoParcial
  * @property integer $Mejora
  * @property integer $AsambleaExtraordinaria_idAsambleaExtraordinaria
- * @property integer $AsambleaExtraordinaria_TrabajadorEmpresa_Cedula
- * @property integer $AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina
- * @property integer $AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF
  * @property integer $CartaConsulta_idCartaConsulta
  * @property integer $Servicio_idServicio
  * @property integer $Servicio_Proveedor_RIF
@@ -43,10 +40,10 @@ class Trabajo extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('Monto, Servicio_idServicio, Servicio_Proveedor_RIF', 'required'),
-			array('Monto, Aprobado, AltoValor, PagoParcial, Mejora, AsambleaExtraordinaria_idAsambleaExtraordinaria, AsambleaExtraordinaria_TrabajadorEmpresa_Cedula, AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina, AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF, CartaConsulta_idCartaConsulta, Servicio_idServicio, Servicio_Proveedor_RIF', 'numerical', 'integerOnly'=>true),
+			array('Monto, Aprobado, AltoValor, PagoParcial, Mejora, AsambleaExtraordinaria_idAsambleaExtraordinaria, CartaConsulta_idCartaConsulta, Servicio_idServicio, Servicio_Proveedor_RIF', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idTrabajo, Monto, Aprobado, AltoValor, PagoParcial, Mejora, AsambleaExtraordinaria_idAsambleaExtraordinaria, AsambleaExtraordinaria_TrabajadorEmpresa_Cedula, AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina, AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF, CartaConsulta_idCartaConsulta, Servicio_idServicio, Servicio_Proveedor_RIF', 'safe', 'on'=>'search'),
+			array('idTrabajo, Monto, Aprobado, AltoValor, PagoParcial, Mejora, AsambleaExtraordinaria_idAsambleaExtraordinaria, CartaConsulta_idCartaConsulta, Servicio_idServicio, Servicio_Proveedor_RIF', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -78,9 +75,6 @@ class Trabajo extends CActiveRecord
 			'PagoParcial' => 'Pago Parcial',
 			'Mejora' => 'Mejora',
 			'AsambleaExtraordinaria_idAsambleaExtraordinaria' => 'Asamblea Extraordinaria Id Asamblea Extraordinaria',
-			'AsambleaExtraordinaria_TrabajadorEmpresa_Cedula' => 'Asamblea Extraordinaria Trabajador Empresa Cedula',
-			'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina' => 'Asamblea Extraordinaria Trabajador Empresa Oficina Id Oficina',
-			'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF' => 'Asamblea Extraordinaria Trabajador Empresa Oficina Empresa Rif',
 			'CartaConsulta_idCartaConsulta' => 'Carta Consulta Id Carta Consulta',
 			'Servicio_idServicio' => 'Servicio Id Servicio',
 			'Servicio_Proveedor_RIF' => 'Servicio Proveedor Rif',
@@ -112,9 +106,6 @@ class Trabajo extends CActiveRecord
 		$criteria->compare('PagoParcial',$this->PagoParcial);
 		$criteria->compare('Mejora',$this->Mejora);
 		$criteria->compare('AsambleaExtraordinaria_idAsambleaExtraordinaria',$this->AsambleaExtraordinaria_idAsambleaExtraordinaria);
-		$criteria->compare('AsambleaExtraordinaria_TrabajadorEmpresa_Cedula',$this->AsambleaExtraordinaria_TrabajadorEmpresa_Cedula);
-		$criteria->compare('AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina',$this->AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina);
-		$criteria->compare('AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF',$this->AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF);
 		$criteria->compare('CartaConsulta_idCartaConsulta',$this->CartaConsulta_idCartaConsulta);
 		$criteria->compare('Servicio_idServicio',$this->Servicio_idServicio);
 		$criteria->compare('Servicio_Proveedor_RIF',$this->Servicio_Proveedor_RIF);

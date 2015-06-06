@@ -34,17 +34,6 @@
 	<br />
 
 	<?php /*
-	<b><?php echo CHtml::encode($data->getAttributeLabel('AsambleaExtraordinaria_TrabajadorEmpresa_Cedula')); ?>:</b>
-	<?php echo CHtml::encode($data->AsambleaExtraordinaria_TrabajadorEmpresa_Cedula); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina')); ?>:</b>
-	<?php echo CHtml::encode($data->AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina); ?>
-	<br />
-
-	<b><?php echo CHtml::encode($data->getAttributeLabel('AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF')); ?>:</b>
-	<?php echo CHtml::encode($data->AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF); ?>
-	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('CartaConsulta_idCartaConsulta')); ?>:</b>
 	<?php echo CHtml::encode($data->CartaConsulta_idCartaConsulta); ?>

@@ -33,7 +33,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Proveedor_RIF'); ?>
-		<?php echo $form->textField($model,'Proveedor_RIF'); ?>
+		<?php echo $form->dropDownList($model,'Proveedor_RIF', array(0 =>'Seleccione Proveedor')+$proveedores); ?>
 		<?php echo $form->error($model,'Proveedor_RIF'); ?>
 	</div>
 

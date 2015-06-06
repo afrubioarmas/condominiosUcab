@@ -66,7 +66,21 @@ class ServicioController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+                
+                 $sql = "SELECT p.RIF, p.nombre
+                    FROM proveedor p
+                    ORDER BY p.nombre ASC";
+                $com = Yii::app()->db->createCommand($sql);
+                
+                $data = $com->queryAll();   
+                //var_dump($data);die;
+                foreach ($data as $value) {
+                    $aux[$value['RIF']] = $value['nombre'];
+                }
+                $proveedores = $aux;
+                //var_dump($proveedores);die;
+                
+                
 		if(isset($_POST['Servicio']))
 		{
 			$model->attributes=$_POST['Servicio'];
@@ -76,6 +90,7 @@ class ServicioController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'proveedores'=>$proveedores,
 		));
 	}
 

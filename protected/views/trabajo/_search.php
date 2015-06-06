@@ -47,21 +47,6 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Cedula'); ?>
-		<?php echo $form->textField($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Cedula'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina'); ?>
-		<?php echo $form->textField($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->label($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF'); ?>
-		<?php echo $form->textField($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF'); ?>
-	</div>
-
-	<div class="row">
 		<?php echo $form->label($model,'CartaConsulta_idCartaConsulta'); ?>
 		<?php echo $form->textField($model,'CartaConsulta_idCartaConsulta'); ?>
 	</div>

@@ -27,13 +27,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Aprobado'); ?>
-		<?php echo $form->textField($model,'Aprobado'); ?>
+		<?php echo $form->dropDownList($model,'Aprobado', array('0' =>'No','1' =>'Si')); ?>
 		<?php echo $form->error($model,'Aprobado'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'AltoValor'); ?>
-		<?php echo $form->textField($model,'AltoValor'); ?>
+		<?php echo $form->dropDownList($model,'AltoValor', array('0' =>'No','1' =>'Si')); ?>
 		<?php echo $form->error($model,'AltoValor'); ?>
 	</div>
 
@@ -45,7 +45,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Mejora'); ?>
-		<?php echo $form->textField($model,'Mejora'); ?>
+		<?php echo $form->dropDownList($model,'Mejora', array('0' =>'No','1' =>'Si')); ?>
 		<?php echo $form->error($model,'Mejora'); ?>
 	</div>
 
@@ -53,24 +53,6 @@
 		<?php echo $form->labelEx($model,'AsambleaExtraordinaria_idAsambleaExtraordinaria'); ?>
 		<?php echo $form->textField($model,'AsambleaExtraordinaria_idAsambleaExtraordinaria'); ?>
 		<?php echo $form->error($model,'AsambleaExtraordinaria_idAsambleaExtraordinaria'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Cedula'); ?>
-		<?php echo $form->textField($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Cedula'); ?>
-		<?php echo $form->error($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Cedula'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina'); ?>
-		<?php echo $form->textField($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina'); ?>
-		<?php echo $form->error($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_idOficina'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF'); ?>
-		<?php echo $form->textField($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF'); ?>
-		<?php echo $form->error($model,'AsambleaExtraordinaria_TrabajadorEmpresa_Oficina_Empresa_RIF'); ?>
 	</div>
 
 	<div class="row">
