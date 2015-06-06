@@ -73,11 +73,42 @@ class ContratoController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idContrato));
 		}
+                
+$sq = "SELECT e.RIF, e.Nombre
+                    FROM edificio e
+                    ORDER BY e.Nombre ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $edificios= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($edificios as $value) {
+                    $aux[$value['RIF']] = $value['Nombre'];
+                }
+                $edificios = $aux;
+                //var_dump($data3);die;
+                                    $sq = "SELECT t.Cedula, t.Nombre
+                                        FROM trabajadoredificio t
+                                        ORDER BY t.Cedula ASC";
+                                    $co = Yii::app()->db->createCommand($sq);
+
+                                    $trabajador= $co->queryAll();   
+                                    //var_dump($trabajador);die;
+                                    foreach ($trabajador as $value) {
+                                        $aux2[$value['Cedula']] = $value['Nombre'];
+                                    }
+                                    $trabajador = $aux2;
+                                    //var_dump($trabajador);die;
+
+                
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'edificios'=>$edificios,
+                        'trabajador'=>$trabajador
+      
 		));
 	}
+
 
 	/**
 	 * Updates a particular model.
@@ -97,9 +128,36 @@ class ContratoController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idContrato));
 		}
+                
+                $sq = "SELECT e.RIF, e.Nombre
+                FROM edificio e
+                ORDER BY e.Nombre ASC";
+                $co = Yii::app()->db->createCommand($sq);
+		$edificios= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($edificios as $value) {
+                    $aux[$value['RIF']] = $value['Nombre'];
+                }
+                $edificios = $aux;
+                //var_dump($data3);die;
+                                         $sq = "SELECT t.Cedula, t.Nombre
+                                        FROM trabajadoredificio t
+                                        ORDER BY t.Nombre ASC";
+                                        $co = Yii::app()->db->createCommand($sq);
 
-		$this->render('update',array(
+                                        $trabajador= $co->queryAll();   
+                                        //var_dump($trabajador);die;
+                                        foreach ($trabajador as $value) {
+                                            $aux2[$value['Cedula']] = $value['Nombre'];
+                                        }
+                                        $trabajador = $aux2;
+                                        //var_dump($trabajador);die;
+
+
+		$this->render('create',array(
 			'model'=>$model,
+                        'edificios'=>$edificios,
+                        'trabajador'=>$trabajador,
 		));
 	}
 

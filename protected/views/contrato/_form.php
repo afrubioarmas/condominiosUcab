@@ -21,13 +21,48 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'FechaInicio'); ?>
-		<?php echo $form->textField($model,'FechaInicio'); ?>
+		<?php
+			$this->widget ('zii.widgets.jui.CJuiDatePicker',  
+				array (
+					'model'=>$model,
+					'attribute'=>'FechaInicio',
+					'language' => 'es',
+					'options'=>array (
+						'dateFormat'=>'yy-mm-dd',
+						'changeMonth'=>'true', 
+                                                'changeYear'=>'true', 
+                                                'yearRange'=>'1920:2015', 
+  						'constrainInput'=>'false',
+						'duration'=>'fast',
+						'showAnim'=>'slide',
+					),  
+				)   
+			);
+		?>
 		<?php echo $form->error($model,'FechaInicio'); ?>
 	</div>
 
 	<div class="row">
+		
 		<?php echo $form->labelEx($model,'FechaFin'); ?>
-		<?php echo $form->textField($model,'FechaFin'); ?>
+		<?php
+			$this->widget ('zii.widgets.jui.CJuiDatePicker',  
+				array (
+					'model'=>$model,
+					'attribute'=>'FechaFin',
+					'language' => 'es',
+					'options'=>array (
+						'dateFormat'=>'yy-mm-dd',
+						'changeMonth'=>'true', 
+                                                'changeYear'=>'true', 
+                                                'yearRange'=>'2015:2090', 
+  						'constrainInput'=>'false',
+						'duration'=>'fast',
+						'showAnim'=>'slide',
+					),  
+				)   
+			);
+		?>
 		<?php echo $form->error($model,'FechaFin'); ?>
 	</div>
 
@@ -39,13 +74,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Edificio_RIF'); ?>
-		<?php echo $form->textField($model,'Edificio_RIF'); ?>
+		<?php echo $form->dropDownList($model,'Edificio_RIF',array(0 => 'selecciona edificio')+$edificios); ?>
 		<?php echo $form->error($model,'Edificio_RIF'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'TrabajadorEdificio_Cedula'); ?>
-		<?php echo $form->textField($model,'TrabajadorEdificio_Cedula'); ?>
+		<?php echo $form->dropDownList($model,'TrabajadorEdificio_Cedula',array(0 => 'selecciona edificio')+$trabajador); ?>
 		<?php echo $form->error($model,'TrabajadorEdificio_Cedula'); ?>
 	</div>
 
