@@ -70,6 +70,10 @@ class ActareunionController extends Controller
 		if(isset($_POST['Actareunion']))
 		{
 			$model->attributes=$_POST['Actareunion'];
+                        
+                        $auxiliar = Juntacondominio::model()->findAll('Edificio_RIF=:Edificio_RIF', array('Edificio_RIF' => $_POST['Actareunion']['Edificio_RIF']));
+                        //var_dump($auxiliar,$model);die;
+                        $model->JuntaCondominio_idJuntaCondominio=$auxiliar[0]->idJuntaCondominio;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idActaReunion));
 		}
@@ -87,12 +91,41 @@ class ActareunionController extends Controller
                 $edificios = $aux;
                 //var_dump($edificios);die;
                 
+                $sq = "SELECT O.idOficina, O.Lugar_idLugar, l.Nombre
+                    FROM oficina O
+                    JOIN lugar l ON O.Lugar_idLugar = l.idLugar
+                    ORDER BY O.Lugar_idLugar ASC";
+                $co = Yii::app()->db->createCommand($sq);
                 
+                $data3= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($data3 as $value) {
+                    $aux2[$value['idOficina']] = $value['Nombre'];
+                }
+                
+                $oficinas = $aux2;
+                //var_dump($data3);die;
+                
+                $sql2 = "SELECT t.Cedula, t.Nombre, t.Apellido
+                    FROM trabajadorempresa t
+                    ORDER BY t.Nombre ASC";
+                $com2 = Yii::app()->db->createCommand($sql2);
+                
+                $trabajadoresempresa= $com2->queryAll();   
+                //var_dump($data3);die;
+                foreach ($trabajadoresempresa as $value) {
+                    $aux3[$value['Cedula']] = $value['Nombre'].' '. $value['Apellido'];
+                }
+                
+                $trabajadoresempresa = $aux3;
+                //var_dump($data3);die;
                 
                 
 		$this->render('create',array(
 			'model'=>$model,
                         'edificios'=>$edificios,
+                        'oficinas'=>$oficinas,
+                        'trabajadoresempresa'=>$trabajadoresempresa,
 		));
 	}
 
@@ -111,12 +144,60 @@ class ActareunionController extends Controller
 		if(isset($_POST['Actareunion']))
 		{
 			$model->attributes=$_POST['Actareunion'];
+                         $auxiliar = Juntacondominio::model()->findAll('Edificio_RIF=:Edificio_RIF', array('Edificio_RIF' => $_POST['Actareunion']['Edificio_RIF']));
+                        //var_dump($auxiliar,$model);die;
+                        $model->JuntaCondominio_idJuntaCondominio=$auxiliar[0]->idJuntaCondominio;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idActaReunion));
 		}
-
+                
+                $sql = "SELECT e.RIF, e.Nombre
+                    FROM edificio e
+                    ORDER BY e.Nombre ASC";
+                $com = Yii::app()->db->createCommand($sql);
+                
+                $data = $com->queryAll();   
+                //var_dump($data);die;
+                foreach ($data as $value) {
+                    $aux[$value['RIF']] = $value['Nombre'];
+                }
+                $edificios = $aux;
+                //var_dump($edificios);die;
+                
+                $sq = "SELECT O.idOficina, O.Lugar_idLugar, l.Nombre
+                    FROM oficina O
+                    JOIN lugar l ON O.Lugar_idLugar = l.idLugar
+                    ORDER BY O.Lugar_idLugar ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $data3= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($data3 as $value) {
+                    $aux2[$value['idOficina']] = $value['Nombre'];
+                }
+                
+                $oficinas = $aux2;
+                //var_dump($data3);die;
+                
+                $sql2 = "SELECT t.Cedula, t.Nombre, t.Apellido
+                    FROM trabajadorempresa t
+                    ORDER BY t.Nombre ASC";
+                $com2 = Yii::app()->db->createCommand($sql2);
+                
+                $trabajadoresempresa= $com2->queryAll();   
+                //var_dump($data3);die;
+                foreach ($trabajadoresempresa as $value) {
+                    $aux3[$value['Cedula']] = $value['Nombre'].' '. $value['Apellido'];
+                }
+                
+                $trabajadoresempresa = $aux3;
+                //var_dump($data3);die;
+                
 		$this->render('update',array(
 			'model'=>$model,
+                        'edificios'=>$edificios,
+                        'oficinas'=>$oficinas,
+                        'trabajadoresempresa'=>$trabajadoresempresa,
 		));
 	}
 

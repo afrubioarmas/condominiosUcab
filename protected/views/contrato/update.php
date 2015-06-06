@@ -18,4 +18,4 @@ $this->menu=array(
 
 <h1>Update Contrato <?php echo $model->idContrato; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'edificios'=>$edificios,'trabajadores'=>$trabajador)); ?>

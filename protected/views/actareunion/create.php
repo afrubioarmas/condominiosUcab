@@ -15,4 +15,4 @@ $this->menu=array(
 
 <h1>Create Actareunion</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model,'edificios'=>$edificios)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'edificios'=>$edificios,'oficinas'=>$oficinas,'trabajadoresempresa'=>$trabajadoresempresa)); ?>

@@ -31,7 +31,7 @@
 						'dateFormat'=>'yy-mm-dd',
 						'changeMonth'=>'true', 
                                                 'changeYear'=>'true', 
-                                                'yearRange'=>'1920:2015', 
+                                                'yearRange'=>'2015:2030', 
   						'constrainInput'=>'false',
 						'duration'=>'fast',
 						'showAnim'=>'slide',
@@ -62,25 +62,25 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Edificio_RIF'); ?>
-		<?php echo $form->dropDownList($model,'Edificio_RIF',array(0 => 'selecciona edificio')+$edificios); ?>
+		<?php echo $form->dropDownList($model,'Edificio_RIF',array(0 => 'Selecciona Edificio')+$edificios); ?>
 		<?php echo $form->error($model,'Edificio_RIF'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Oficina_idOficina'); ?>
-		<?php echo $form->textField($model,'Oficina_idOficina'); ?>
+		<?php echo $form->dropDownList($model,'Oficina_idOficina',array(0 => 'Selecciona Oficina')+$oficinas); ?>
 		<?php echo $form->error($model,'Oficina_idOficina'); ?>
 	</div>
 
-	<div class="row">
+	<div class="row" style="display:none;">
 		<?php echo $form->labelEx($model,'JuntaCondominio_idJuntaCondominio'); ?>
-		<?php echo $form->textField($model,'JuntaCondominio_idJuntaCondominio'); ?>
+		<?php echo $model->JuntaCondominio_idJuntaCondominio=0; ?>
 		<?php echo $form->error($model,'JuntaCondominio_idJuntaCondominio'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'TrabajadorEmpresa_Cedula'); ?>
-		<?php echo $form->textField($model,'TrabajadorEmpresa_Cedula'); ?>
+		<?php echo $form->dropDownList($model,'TrabajadorEmpresa_Cedula',array(0 => 'Selecciona Trabajador de Empresa')+$trabajadoresempresa); ?>
 		<?php echo $form->error($model,'TrabajadorEmpresa_Cedula'); ?>
 	</div>
 
