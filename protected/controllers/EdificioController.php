@@ -183,8 +183,39 @@ class EdificioController extends Controller
 				$this->redirect(array('view','id'=>$model->RIF));
 		}
 
+		$sq = "SELECT l.idLugar, l.nombre, l.tipo 
+                    FROM lugar l
+                    ORDER BY l.nombre ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $data3= $co->queryAll();   
+                //var_dump($data);die;
+                foreach ($data3 as $value) {
+                    $aux[$value['idLugar']] = $value['nombre'].' -> '.$value['tipo'];
+                }
+                $data3 = $aux;
+                //var_dump($data);die;
+                
+                
+                
+                $sq2 = "SELECT t.cedula, t.nombre, t.apellido 
+                    FROM trabajadorempresa t
+                    ORDER BY t.nombre ASC";
+                $co2 = Yii::app()->db->createCommand($sq2);
+                
+                $trabajadores = $co2->queryAll();   
+                //var_dump($trabajadores);die;
+                foreach ($trabajadores as $value) {
+                    $aux2[$value['cedula']] = $value['nombre'].' '.$value['apellido'];
+                }
+                $trabajadores = $aux2;
+                //var_dump($trabajadores);die;
+                
 		$this->render('update',array(
 			'model'=>$model,
+                        'data3'=>$data3,
+                        'trabajadores'=>$trabajadores,
+                        'update'=>1,
 		));
 	}
 

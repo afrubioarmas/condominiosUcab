@@ -5,20 +5,20 @@
  apartamentopersona --------> Quitado del layout porque vamos a crear una funcion en la vista de propietarios que permita introducir (en caso de que no tenga nada en apartamento-persona) el edificio en el cual vive para asi asignarle el primer apartamento que consigamos vacio.
  #areacomun -----------> Listo!
  #asambleaextraordinaria ------------> Listo!
- asambleaordinaria
- atencion
- cartaconsulta
- cheque
- contrato
- correoelectronico
- cuentabancaria
- documentocondominio
- #edificio ----------> Lo sacamos del layout porque es una mierda de tabla! Listo!
- efectivo
- empresa
- fondo
- horario
- inspeccionmantenimiento
+ #asambleaordinaria ------------> Listo!
+ atencion 
+ cartaconsulta -------> Hay que hacer la relacion de Edificio con cartaconsulta a pata. Un edificio puedetener muchas carta consulta y una carta consulta tiene un ediificio.
+ #cheque ----------> Lo sacamos del layout porque es una mierda de tabla! Listo!
+ #contrato ---------> Listo!
+ #correoelectronico -------->Lo sacamos del layout porque se agregara en la vista de cada uno de los posibles casos en los que se necesita el E-correo!
+ #cuentabancaria ---------> Listo!
+ #documentocondominio ---------> Listo!
+ #edificio ------------> Listo!
+ #efectivo ----------> Lo sacamos del layout porque es una mierda de tabla! Listo!
+ #empresa ------------> Listo!
+ #fondo ------------> Listo!
+ horario ----------------> Lo saco del layout y se agregara en vista de cada objeto que lo necesite
+ inspeccionmantenimiento ------------ QUEDE AQUI
  juntacondominio
  lugar
  notificacionapartamento
@@ -30,11 +30,11 @@
  #proveedor ------------> Listo!
  #servicio ------------> Listo!
  supervicionevaluacion
- tdc
- telefono
+ #tdc ----------> Lo sacamos del layout porque es una mierda de tabla! Listo!
+ #telefono -------->Lo sacamos del layout porque se agregara en la vista de cada uno de los posibles casos en los que se necesita el telf!
  trabajadoredificio
  trabajadorempresa
  trabajo
- transaccion
- transferencia
+ transaccion 
+ #transferencia ----------> Lo sacamos del layout porque es una mierda de tabla! Listo!
  ventaapartamento ----------> Lo haremos el domingo lo haremos por otra vista (edificio o trabajador empresa) o por query...

@@ -18,4 +18,4 @@ $this->menu=array(
 
 <h1>Update Asambleaordinaria <?php echo $model->idAsambleaOrdinaria; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'trabajadores'=>$trabajadores)); ?>

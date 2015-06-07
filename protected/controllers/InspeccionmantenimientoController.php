@@ -73,9 +73,25 @@ class InspeccionmantenimientoController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idInspeccionMantenimiento));
 		}
-
+                
+                $sq = "SELECT a.idAreacomun, a.Edificio_RIF, a.Descripcion,e.nombre
+                    FROM areacomun a
+                    JOIN edificio e ON a.Edificio_RIF = e.RIF
+                    ORDER BY e.nombre ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $data3= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($data3 as $value) {
+                    $aux[$value['idAreacomun']] = $value['nombre'].' --> '.$value['Descripcion'];
+                }
+                
+                $areascomun = $aux;
+                //var_dump($data3);die;
+                
 		$this->render('create',array(
 			'model'=>$model,
+			'areascomun'=>$areascomun,
 		));
 	}
 

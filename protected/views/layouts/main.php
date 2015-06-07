@@ -44,7 +44,7 @@
 				array('label'=>'Edificio', 'url'=>array('/edificio/admin')),
 				array('label'=>'Empresa', 'url'=>array('/empresa/admin')),
 				array('label'=>'Fondo', 'url'=>array('/fondo/admin')),
-				array('label'=>'Horario', 'url'=>array('/horario/admin')),
+				//array('label'=>'Horario', 'url'=>array('/horario/admin')),
 				array('label'=>'InspeccionMantenimiento', 'url'=>array('/inspeccionmantenimiento/admin')),
 				array('label'=>'JuntaCondominio', 'url'=>array('/juntacondominio/admin')),
 				array('label'=>'Lugar', 'url'=>array('/lugar/admin')),
