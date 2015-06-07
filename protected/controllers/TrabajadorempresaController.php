@@ -73,9 +73,24 @@ class TrabajadorempresaController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Cedula));
 		}
+                 $sq = "SELECT O.idOficina, O.Lugar_idLugar, l.Nombre
+                    FROM oficina O
+                    JOIN lugar l ON O.Lugar_idLugar = l.idLugar
+                    ORDER BY O.Lugar_idLugar ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $oficinas= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($oficinas as $value) {
+                    $aux[$value['idOficina']] = $value['Nombre'];
+                }
+                
+                $oficinas = $aux;
+                //var_dump($data3);die;
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'oficinas'=>$oficinas,
 		));
 	}
 
@@ -97,9 +112,24 @@ class TrabajadorempresaController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->Cedula));
 		}
+                 $sq = "SELECT O.idOficina, O.Lugar_idLugar, l.Nombre
+                    FROM oficina O
+                    JOIN lugar l ON O.Lugar_idLugar = l.idLugar
+                    ORDER BY O.Lugar_idLugar ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $oficinas= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($oficinas as $value) {
+                    $aux[$value['idOficina']] = $value['Nombre'];
+                }
+                
+                $oficinas = $aux;
+                //var_dump($data3);die;
 
 		$this->render('update',array(
 			'model'=>$model,
+                        'oficinas'=>$oficinas,
 		));
 	}
 

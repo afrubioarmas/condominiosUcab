@@ -49,15 +49,11 @@
 		<?php echo $form->error($model,'Rol'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'Contrato'); ?>
-		<?php echo $form->textField($model,'Contrato',array('size'=>45,'maxlength'=>45)); ?>
-		<?php echo $form->error($model,'Contrato'); ?>
-	</div>
+	
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Oficina_idOficina'); ?>
-		<?php echo $form->textField($model,'Oficina_idOficina'); ?>
+		<?php echo $form->dropDownList($model,'Oficina_idOficina',array(0 => 'selecciona oficina')+$oficinas); ?>
 		<?php echo $form->error($model,'Oficina_idOficina'); ?>
 	</div>
 

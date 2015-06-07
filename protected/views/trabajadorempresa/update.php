@@ -18,4 +18,4 @@ $this->menu=array(
 
 <h1>Update Trabajadorempresa <?php echo $model->Cedula; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'oficinas'=>$oficinas)); ?>

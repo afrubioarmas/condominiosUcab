@@ -27,7 +27,9 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Banco'); ?>
-		<?php echo $form->textField($model,'Banco',array('size'=>45,'maxlength'=>45)); ?>
+                
+		<?php echo $form->dropDownList($model,'Banco',array(0 =>'Seleccione Tipo de Edificio','Bancoro' =>'Bancoro','Banesco' =>'Banesco','Banco Canarias de Venezuela' =>'Banco Canarias de Venezuela','Banco Confederado' =>'Banco Confederado','Banco del Caribe' =>'Banco del Caribe','Banco de Venezuela' =>'Banco de Venezuela','Banco Provincial' =>'Banco Provincial','Banco Exterior' =>'Banco Exterior','Banco Mercantil' =>'Banco Mercantil','Banco Federal' =>'Banco Federal','Banco Bicentenario' =>'Banco Bicentenario','Corp Banca' =>'Corp Banca')); ?>
+                
 		<?php echo $form->error($model,'Banco'); ?>
 	</div>
 
