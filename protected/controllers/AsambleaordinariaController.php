@@ -73,9 +73,25 @@ class AsambleaordinariaController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idAsambleaOrdinaria));
 		}
+                
+                $sq2 = "SELECT t.cedula, t.nombre, t.apellido 
+                    FROM trabajadorempresa t
+                    ORDER BY t.nombre ASC";
+                $co2 = Yii::app()->db->createCommand($sq2);
+                
+                $trabajadores = $co2->queryAll();   
+                //var_dump($trabajadores);die;
+                foreach ($trabajadores as $value) {
+                    $aux2[$value['cedula']] = $value['nombre'].' '.$value['apellido'];
+                }
+                $trabajadores = $aux2;
+                //var_dump($trabajadores);die;
+                
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'trabajadores'=>$trabajadores,
+                    
 		));
 	}
 
@@ -98,8 +114,25 @@ class AsambleaordinariaController extends Controller
 				$this->redirect(array('view','id'=>$model->idAsambleaOrdinaria));
 		}
 
+                $sq2 = "SELECT t.cedula, t.nombre, t.apellido 
+                    FROM trabajadorempresa t
+                    ORDER BY t.nombre ASC";
+                $co2 = Yii::app()->db->createCommand($sq2);
+                
+                $trabajadores = $co2->queryAll();   
+                //var_dump($trabajadores);die;
+                foreach ($trabajadores as $value) {
+                    $aux2[$value['cedula']] = $value['nombre'].' '.$value['apellido'];
+                }
+                $trabajadores = $aux2;
+                //var_dump($trabajadores);die;
+                
+                
+                
 		$this->render('update',array(
 			'model'=>$model,
+                        'trabajadores'=>$trabajadores,
+                    
 		));
 	}
 

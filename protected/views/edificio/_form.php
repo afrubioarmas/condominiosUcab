@@ -72,7 +72,7 @@
 		<?php echo $form->dropDownList($model,'TrabajadorEmpresa_Cedula',array(0 => 'Selecciona Trabajador')+$trabajadores); ?>
 		<?php echo $form->error($model,'TrabajadorEmpresa_Cedula'); ?>
 	</div>
-        
+        <?php if(isset($update)){}else{ ?>
         <div class="row">
 		<?php echo $form->labelEx($model,'Pisos'); ?>
 		<?php echo $form->textField($model,'Pisos'); ?>
@@ -84,7 +84,7 @@
 		<?php echo $form->textField($model,'ApartamentosPiso'); ?>
 		<?php echo $form->error($model,'ApartamentosPiso'); ?>
 	</div>
-
+        <?php } ?>
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>

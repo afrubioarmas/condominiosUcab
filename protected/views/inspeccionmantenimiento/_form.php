@@ -27,25 +27,41 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Inspeccion'); ?>
-		<?php echo $form->textField($model,'Inspeccion'); ?>
+		<?php echo $form->dropDownList($model,'Inspeccion', array('0' =>'No','1' =>'Si')); ?>
 		<?php echo $form->error($model,'Inspeccion'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Mantenimiento'); ?>
-		<?php echo $form->textField($model,'Mantenimiento'); ?>
+		<?php echo $form->dropDownList($model,'Mantenimiento', array('0' =>'No','1' =>'Si')); ?>
 		<?php echo $form->error($model,'Mantenimiento'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Fecha'); ?>
-		<?php echo $form->textField($model,'Fecha'); ?>
-		<?php echo $form->error($model,'Fecha'); ?>
+                <?php
+			$this->widget ('zii.widgets.jui.CJuiDatePicker',  
+				array (
+					'model'=>$model,
+					'attribute'=>'Fecha',
+					'language' => 'es',
+					'options'=>array (
+						'dateFormat'=>'yy-mm-dd',
+						'changeMonth'=>'true', 
+                                                'changeYear'=>'true', 
+                                                'yearRange'=>'2015:2030', 
+  						'constrainInput'=>'false',
+						'duration'=>'fast',
+						'showAnim'=>'slide',
+					),  
+				)   
+			);
+		?>		<?php echo $form->error($model,'Fecha'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'AreaComun_idAreaComun'); ?>
-		<?php echo $form->textField($model,'AreaComun_idAreaComun'); ?>
+		<?php echo $form->dropDownList($model,'AreaComun_idAreaComun',array(0 => 'Selecciona Area Comun')+$areascomun); ?>
 		<?php echo $form->error($model,'AreaComun_idAreaComun'); ?>
 	</div>
 
