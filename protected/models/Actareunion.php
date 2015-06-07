@@ -39,7 +39,7 @@ class Actareunion extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Fecha, Tipo, Motivo, Llamado, Edificio_RIF, Oficina_idOficina,  JuntaCondominio_idJuntaCondominio, TrabajadorEmpresa_Cedula', 'required'),
+			array('Fecha, Tipo, Motivo, Llamado, Edificio_RIF, Oficina_idOficina, TrabajadorEmpresa_Cedula', 'required'),
 			array('Llamado, Edificio_RIF, Oficina_idOficina,  JuntaCondominio_idJuntaCondominio, TrabajadorEmpresa_Cedula', 'numerical', 'integerOnly'=>true),
 			array('Tipo, Motivo', 'length', 'max'=>45),
 			// The following rule is used by search().

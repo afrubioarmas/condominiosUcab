@@ -1,10 +1,10 @@
 	CRUD LISTOS 
 
- actareunion
- apartamento
- apartamentopersona
- areacomun
- asambleaextraordinaria
+ #actareunion --------> Listo!
+ #apartamento --------> Quitado del layout porque los apartamentos se crean al crear un edificio! Listo!
+ apartamentopersona --------> Quitado del layout porque vamos a crear una funcion en la vista de propietarios que permita introducir (en caso de que no tenga nada en apartamento-persona) el edificio en el cual vive para asi asignarle el primer apartamento que consigamos vacio.
+ #areacomun -----------> Listo!
+ #asambleaextraordinaria ------------> Listo!
  asambleaordinaria
  atencion
  cartaconsulta
@@ -13,7 +13,7 @@
  correoelectronico
  cuentabancaria
  documentocondominio
- edificio
+ #edificio ----------> Lo sacamos del layout porque es una mierda de tabla! Listo!
  efectivo
  empresa
  fondo
@@ -25,10 +25,10 @@
  oficina
  pagosprogramados
  personaasamblea
- piso
+ #piso --------> Quitado del layout porque los apartamentos se crean al crear un edificio! Listo!
  propietario
- proveedor
- servicio
+ #proveedor ------------> Listo!
+ #servicio ------------> Listo!
  supervicionevaluacion
  tdc
  telefono
@@ -37,4 +37,4 @@
  trabajo
  transaccion
  transferencia
- ventaapartamento
+ ventaapartamento ----------> Lo haremos el domingo lo haremos por otra vista (edificio o trabajador empresa) o por query...
