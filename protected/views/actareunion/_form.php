@@ -62,13 +62,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Edificio_RIF'); ?>
-		<?php echo $form->dropDownList($model,'Edificio_RIF',array(0 => 'Selecciona Edificio')+$edificios); ?>
+		<?php echo $form->dropDownList($model,'Edificio_RIF',array(NULL => 'Selecciona Edificio')+$edificios); ?>
 		<?php echo $form->error($model,'Edificio_RIF'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Oficina_idOficina'); ?>
-		<?php echo $form->dropDownList($model,'Oficina_idOficina',array(0 => 'Selecciona Oficina')+$oficinas); ?>
+		<?php echo $form->dropDownList($model,'Oficina_idOficina',array(NULL => 'Selecciona Oficina')+$oficinas); ?>
 		<?php echo $form->error($model,'Oficina_idOficina'); ?>
 	</div>
 
@@ -80,7 +80,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'TrabajadorEmpresa_Cedula'); ?>
-		<?php echo $form->dropDownList($model,'TrabajadorEmpresa_Cedula',array(0 => 'Selecciona Trabajador de Empresa')+$trabajadoresempresa); ?>
+		<?php echo $form->dropDownList($model,'TrabajadorEmpresa_Cedula',array(NULL => 'Selecciona Trabajador de Empresa')+$trabajadoresempresa); ?>
 		<?php echo $form->error($model,'TrabajadorEmpresa_Cedula'); ?>
 	</div>
 

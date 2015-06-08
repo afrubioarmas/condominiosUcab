@@ -35,7 +35,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Oficina_idOficina'); ?>
-		<?php echo $form->dropDownList($model,'Oficina_idOficina',array(0 => 'Selecciona Lugar')+$data3); ?>
+		<?php echo $form->dropDownList($model,'Oficina_idOficina',array(NULL => 'Selecciona Lugar')+$data3); ?>
 		<?php echo $form->error($model,'Oficina_idOficina'); ?>
 	</div>
 

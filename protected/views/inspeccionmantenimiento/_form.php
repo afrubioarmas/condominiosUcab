@@ -61,13 +61,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'AreaComun_idAreaComun'); ?>
-		<?php echo $form->dropDownList($model,'AreaComun_idAreaComun',array(0 => 'Selecciona Area Comun')+$areascomun); ?>
+		<?php echo $form->dropDownList($model,'AreaComun_idAreaComun',array(NULL => 'Selecciona Area Comun')+$areascomun); ?>
 		<?php echo $form->error($model,'AreaComun_idAreaComun'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'TrabajadorEdificio_Cedula'); ?>
-		<?php echo $form->textField($model,'TrabajadorEdificio_Cedula'); ?>
+		<?php echo $form->dropDownList($model,'TrabajadorEdificio_Cedula',array(NULL => 'selecciona trabajador del edificio')+$trabajadoredificio); ?>
 		<?php echo $form->error($model,'TrabajadorEdificio_Cedula'); ?>
 	</div>
 

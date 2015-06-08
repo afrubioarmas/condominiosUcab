@@ -27,7 +27,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Empresa_RIF'); ?>
-		<?php echo $form->textField($model,'Empresa_RIF'); ?>
+		<?php echo $form->dropDownList($model,'Empresa_RIF',array(NULL => 'Selecciona Oficina')+$empresa); ?>
 		<?php echo $form->error($model,'Empresa_RIF'); ?>
 	</div>
 

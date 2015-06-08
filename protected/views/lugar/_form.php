@@ -21,7 +21,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Tipo'); ?>
-		<?php echo $form->dropDownList($model,'Tipo', array(0 =>'Seleccione Tipo de Lugar','Pais' =>'Pais','Estado' =>'Estado','Municipio' =>'Municipio','Parroquia' =>'Parroquia')); ?>
+		<?php echo $form->dropDownList($model,'Tipo', array(NULL =>'Seleccione Tipo de Lugar','Pais' =>'Pais','Estado' =>'Estado','Municipio' =>'Municipio','Parroquia' =>'Parroquia')); ?>
 		<?php echo $form->error($model,'Tipo'); ?>
 	</div>
 

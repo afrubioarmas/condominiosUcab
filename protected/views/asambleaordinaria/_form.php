@@ -56,7 +56,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'TrabajadorEmpresa_Cedula'); ?>
-		<?php echo $form->dropDownList($model,'TrabajadorEmpresa_Cedula',array(0 => 'Selecciona Trabajador')+$trabajadores); ?>
+		<?php echo $form->dropDownList($model,'TrabajadorEmpresa_Cedula',array(NULL => 'Selecciona Trabajador')+$trabajadores); ?>
 		<?php echo $form->error($model,'TrabajadorEmpresa_Cedula'); ?>
 	</div>
 
