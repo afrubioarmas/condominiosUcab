@@ -33,6 +33,7 @@ $this->menu=array(
 		'Servicio_idServicio2',
 		'Servicio_idServicio3',
 		'Servicio_Final',
+		'Edificio_RIF',
 		
 	),
 )); ?>

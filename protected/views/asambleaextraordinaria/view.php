@@ -28,3 +28,17 @@ $this->menu=array(
 		'TrabajadorEmpresa_Cedula',
 	),
 )); ?>
+<br><br>
+<b>Confirmar Servicio:</b>
+<br><br>
+<?php if(isset( $aux[0])){ ?>
+<input type="button" onclick="location.href='<?php echo Yii::app()->createUrl("asambleaextraordinaria/realizarpago",array("id"=>$servicios[0]['idTrabajo'],"servicioFinal"=>$servicios[0]['Servicio_idServicio']))?>'" value='<?php echo $aux[0]['Descripcion']." = ".$aux[0]['monto'] ?>'>
+<?php } ?>
+<?php if(isset( $aux[1])){ ?>
+<input type="button" onclick="location.href='<?php echo Yii::app()->createUrl("asambleaextraordinaria/realizarpago",array("id"=>$servicios[0]['idTrabajo'],"servicioFinal"=>$servicios[0]['Servicio_idServicio2']))?>'" value='<?php echo $aux[1]['Descripcion']." = ".$aux[1]['monto'] ?>'>
+<?php } ?>
+<?php if(isset( $aux[2])){ ?>
+<input type="button" onclick="location.href='<?php echo Yii::app()->createUrl("asambleaextraordinaria/realizarpago",array("id"=>$servicios[0]['idTrabajo'],"servicioFinal"=>$servicios[0]['Servicio_idServicio3']))?>'" value='<?php echo $aux[2]['Descripcion']." = ".$aux[2]['monto'] ?>'>
+<?php } ?>
+
+

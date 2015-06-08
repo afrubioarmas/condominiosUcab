@@ -110,6 +110,19 @@ class TrabajoController extends Controller
                         }
 		}
                 
+                $sql = "SELECT e.RIF, e.Nombre
+                    FROM edificio e
+                    ORDER BY e.Nombre ASC";
+                $com = Yii::app()->db->createCommand($sql);
+                
+                $data= $com->queryAll();   
+                //var_dump($data3);die;
+                foreach ($data as $value) {
+                    $aux1[$value['RIF']] = $value['Nombre'];
+                }
+                $edificios = $aux1;
+                //var_dump($data3);die;
+                
                  $sq = "SELECT s.idServicio, s.Descripcion,s.monto, p.Nombre
                     FROM servicio s
                     JOIN proveedor p ON s.Proveedor_Rif = p.Rif
@@ -129,6 +142,7 @@ class TrabajoController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 			'servicios'=>$servicios,
+			'edificios'=>$edificios,
 		));
 	}
 

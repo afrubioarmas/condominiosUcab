@@ -28,7 +28,7 @@ class AsambleaextraordinariaController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','realizarpago'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -51,8 +51,35 @@ class AsambleaextraordinariaController extends Controller
 	 */
 	public function actionView($id)
 	{
+                
+                $sq2 = "SELECT t.idTrabajo, t.Servicio_idServicio, t.Servicio_idServicio2, t.Servicio_idServicio3 
+                    FROM trabajo t
+                    WHERE t.AsambleaExtraordinaria_idAsambleaExtraordinaria = ".$id."
+                        
+                    ";
+                $co2 = Yii::app()->db->createCommand($sq2);
+                
+                $servicios = $co2->queryAll();   
+                //var_dump($servicios);die;
+                
+                $sq = "SELECT s.idServicio, s.Descripcion,s.monto, p.Nombre
+                    FROM servicio s
+                    JOIN proveedor p ON s.Proveedor_Rif = p.Rif
+                    WHERE s.idServicio = ".$servicios[0]['Servicio_idServicio']." OR
+                          s.idServicio = ".$servicios[0]['Servicio_idServicio2']." OR
+                          s.idServicio = ".$servicios[0]['Servicio_idServicio3']."    
+                    ORDER BY p.Nombre ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $data3= $co->queryAll();   
+                
+                $aux=$data3;
+                //var_dump($aux);die;
+                
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
+			'servicios'=>$servicios,
+			'aux'=>$aux,
 		));
 	}
 
@@ -203,5 +230,36 @@ class AsambleaextraordinariaController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+        
+        public function actionRealizarpago($id,$servicioFinal)
+	{
+                
+		$trabajo=Trabajo::model()->findbypk($id);
+                $trabajo->Servicio_Final=$servicioFinal;
+                $servicio=Servicio::model()->findbypk($trabajo->Servicio_Final);
+                $Asambleaextraordinaria=Asambleaextraordinaria::model()->findbypk($trabajo->AsambleaExtraordinaria_idAsambleaExtraordinaria);
+                
+                $transaccion = new transaccion;
+                    $transaccion->Monto = $servicio->Monto; 
+                    $transaccion->Fecha = date('Y-m-d H:i:s');
+                    $transaccion->Aprobado=1;
+                    $transaccion->Descripcion = $servicio->Descripcion; 
+                    $transaccion->Ingreso = 0;
+                    $transaccion->TDC_NumeroTDC=0;
+                    $transaccion->Transferencia_idTransferencia=1;
+                    $transaccion->Efectivo_idEfectivo=0;
+                    $transaccion->Cheque_numeroCheque=0;
+                    $transaccion->Fondo_idFondo=1;
+                    $transaccion->PagosProgramados_idPagosProgramados=0;
+                    $transaccion->Edificio_RIF=$trabajo->Edificio_RIF;
+                    $transaccion->Propietario_Cedula=0;
+                    $transaccion->Trabajo_idTrabajo=$id;
+                    $transaccion->save();
+                    
+                $dataProvider=new CActiveDataProvider('Asambleaextraordinaria');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
 	}
 }

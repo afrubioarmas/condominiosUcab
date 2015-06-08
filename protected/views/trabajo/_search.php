@@ -70,6 +70,11 @@
 		<?php echo $form->label($model,'Servicio_Final'); ?>
 		<?php echo $form->textField($model,'Servicio_Final'); ?>
 	</div>
+    
+        <div class="row">
+		<?php echo $form->label($model,'Edificio_RIF'); ?>
+		<?php echo $form->textField($model,'Edificio_RIF'); ?>
+	</div>
         
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>

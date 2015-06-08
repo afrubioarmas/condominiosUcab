@@ -19,4 +19,4 @@ $this->menu=array(
         echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
     }
 ?>
-<?php $this->renderPartial('_form', array('model'=>$model,'servicios'=>$servicios)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'servicios'=>$servicios,'edificios'=>$edificios)); ?>
