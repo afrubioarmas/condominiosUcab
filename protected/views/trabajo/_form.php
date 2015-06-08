@@ -51,27 +51,34 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'AsambleaExtraordinaria_idAsambleaExtraordinaria'); ?>
-		<?php echo $form->textField($model,'AsambleaExtraordinaria_idAsambleaExtraordinaria'); ?>
+		<?php echo $form->dropDownList($model,'AsambleaExtraordinaria_idAsambleaExtraordinaria', array(NULL =>'No','1' =>'Si')); ?>
 		<?php echo $form->error($model,'AsambleaExtraordinaria_idAsambleaExtraordinaria'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'CartaConsulta_idCartaConsulta'); ?>
-		<?php echo $form->textField($model,'CartaConsulta_idCartaConsulta'); ?>
+		<?php echo $form->dropDownList($model,'CartaConsulta_idCartaConsulta', array(NULL =>'No','1' =>'Si')); ?>
 		<?php echo $form->error($model,'CartaConsulta_idCartaConsulta'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Servicio_idServicio'); ?>
-		<?php echo $form->textField($model,'Servicio_idServicio'); ?>
+		<?php echo $form->dropDownList($model,'Servicio_idServicio', array(NULL =>'Seleccione Proveedor')+$servicios); ?>
 		<?php echo $form->error($model,'Servicio_idServicio'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->labelEx($model,'Servicio_Proveedor_RIF'); ?>
-		<?php echo $form->textField($model,'Servicio_Proveedor_RIF'); ?>
-		<?php echo $form->error($model,'Servicio_Proveedor_RIF'); ?>
+        	<div class="row">
+		<?php echo $form->labelEx($model,'Servicio_idServicio2'); ?>
+		<?php echo $form->dropDownList($model,'Servicio_idServicio2', array(NULL =>'Seleccione Proveedor')+$servicios); ?>
+		<?php echo $form->error($model,'Servicio_idServicio2'); ?>
 	</div>
+
+        	<div class="row">
+		<?php echo $form->labelEx($model,'Servicio_idServicio3'); ?>
+		<?php echo $form->dropDownList($model,'Servicio_idServicio3', array(NULL =>'Seleccione Proveedor')+$servicios); ?>
+		<?php echo $form->error($model,'Servicio_idServicio3'); ?>
+	</div>
+
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

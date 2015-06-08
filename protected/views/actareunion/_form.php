@@ -67,8 +67,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'Oficina_idOficina'); ?>
-		<?php echo $form->dropDownList($model,'Oficina_idOficina',array(0 => 'Selecciona Oficina')+$oficinas); ?>
+		<?php echo $form->labelEx($model,'Seleccione donde va a ser la reunion: '); ?>
+		<?php echo $form->dropDownList($model,'Oficina_idOficina',array(0 => 'Mi Edificio')+$oficinas); ?>
 		<?php echo $form->error($model,'Oficina_idOficina'); ?>
 	</div>
 

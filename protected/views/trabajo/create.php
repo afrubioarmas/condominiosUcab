@@ -14,5 +14,9 @@ $this->menu=array(
 ?>
 
 <h1>Create Trabajo</h1>
-
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php
+    foreach(Yii::app()->user->getFlashes() as $key => $message) {
+        echo '<div class="flash-' . $key . '">' . $message . "</div>\n";
+    }
+?>
+<?php $this->renderPartial('_form', array('model'=>$model,'servicios'=>$servicios)); ?>

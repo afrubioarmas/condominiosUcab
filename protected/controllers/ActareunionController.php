@@ -70,6 +70,8 @@ class ActareunionController extends Controller
 		if(isset($_POST['Actareunion']))
 		{
 			$model->attributes=$_POST['Actareunion'];
+                        if($_POST['Actareunion']['Oficina_idOficina']==0)
+                            $model->Oficina_idOficina=NULL;
                         
                         $auxiliar = Juntacondominio::model()->findAll('Edificio_RIF=:Edificio_RIF', array('Edificio_RIF' => $_POST['Actareunion']['Edificio_RIF']));
                         //var_dump($auxiliar,$model);die;

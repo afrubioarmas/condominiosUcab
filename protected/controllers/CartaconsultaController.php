@@ -71,7 +71,9 @@ class CartaconsultaController extends Controller
 		{
 			$model->attributes=$_POST['Cartaconsulta'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->idCartaConsulta));
+                            if($model->Motivo=='Trabajo')
+                                $this->redirect(array('/trabajo/create'));
+                                    $this->redirect(array('view','id'=>$model->idCartaConsulta));
 		}
 
 		$this->render('create',array(

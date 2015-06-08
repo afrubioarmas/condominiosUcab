@@ -68,14 +68,67 @@ class TrabajoController extends Controller
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Trabajo']))
-		{
+		{   
 			$model->attributes=$_POST['Trabajo'];
+                        
+                        if($model->AsambleaExtraordinaria_idAsambleaExtraordinaria==NULL && $model->CartaConsulta_idCartaConsulta==NULL){
+                        
+                        Yii::app()->user->setFlash('error', "Debes elegir entre Carta Consulta o Asamblea Extraordinaria");
+                        $this->redirect(array('/trabajo/create'));
+                        }else if($model->AsambleaExtraordinaria_idAsambleaExtraordinaria=='1' && $model->CartaConsulta_idCartaConsulta=='1'){
+                        
+                        Yii::app()->user->setFlash('error', "Debes elegir entre Carta Consulta o Asamblea Extraordinaria");
+                        $this->redirect(array('/trabajo/create'));
+                        }else{
+                        if($model->AsambleaExtraordinaria_idAsambleaExtraordinaria==1){
+                            $sq = "SELECT s.idAsambleaextraordinaria
+                                FROM asambleaextraordinaria s
+                                
+                                ORDER BY s.idAsambleaextraordinaria DESC";
+                            $co = Yii::app()->db->createCommand($sq);
+
+                            $data3= $co->queryAll();   
+                            //var_dump($data3);die;
+                            $model->AsambleaExtraordinaria_idAsambleaExtraordinaria=$data3[0]['idAsambleaextraordinaria'];
+                            
+                        }else{
+                            $sq = "SELECT s.idCartaConsulta
+                                FROM cartaconsulta s
+                                
+                                ORDER BY s.idCartaConsulta DESC";
+                            $co = Yii::app()->db->createCommand($sq);
+
+                            $data3= $co->queryAll();   
+                            //var_dump($data3);die;
+                            $model->CartaConsulta_idCartaConsulta=$data3[0]['idCartaConsulta'];
+                            
+                        }
+                        
+                        
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idTrabajo));
+                        }
 		}
+                
+                 $sq = "SELECT s.idServicio, s.Descripcion,s.monto, p.Nombre
+                    FROM servicio s
+                    JOIN proveedor p ON s.Proveedor_Rif = p.Rif
+                    ORDER BY p.Nombre ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $data3= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($data3 as $value) {
+                    $aux[$value['idServicio']] = $value['Nombre'].'->'.$value['Descripcion'].'='.$value['monto'].' Bsf.';
+                }
+                
+                $servicios = $aux;
+                //var_dump($data3);die;
+                
 
 		$this->render('create',array(
 			'model'=>$model,
+			'servicios'=>$servicios,
 		));
 	}
 
@@ -98,8 +151,24 @@ class TrabajoController extends Controller
 				$this->redirect(array('view','id'=>$model->idTrabajo));
 		}
 
+                 $sq = "SELECT s.idServicio, s.Descripcion,s.monto, p.Nombre
+                    FROM servicio s
+                    JOIN proveedor p ON s.Proveedor_Rif = p.Rif
+                    ORDER BY p.Nombre ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $data3= $co->queryAll();   
+                //var_dump($data3);die;
+                foreach ($data3 as $value) {
+                    $aux[$value['idServicio']] = $value['Nombre'].'->'.$value['Descripcion'].'='.$value['monto'].' Bsf.';
+                }
+                
+                $servicios = $aux;
+                //var_dump($data3);die;
+                    
 		$this->render('update',array(
 			'model'=>$model,
+                        'servicios'=>$servicios,
 		));
 	}
 

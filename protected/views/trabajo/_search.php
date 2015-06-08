@@ -56,11 +56,21 @@
 		<?php echo $form->textField($model,'Servicio_idServicio'); ?>
 	</div>
 
-	<div class="row">
-		<?php echo $form->label($model,'Servicio_Proveedor_RIF'); ?>
-		<?php echo $form->textField($model,'Servicio_Proveedor_RIF'); ?>
-	</div>
+        <div class="row">
+		<?php echo $form->label($model,'Servicio_idServicio2'); ?>
+		<?php echo $form->textField($model,'Servicio_idServicio2'); ?>
+	</div>    
 
+       <div class="row">
+		<?php echo $form->label($model,'Servicio_idServicio3'); ?>
+		<?php echo $form->textField($model,'Servicio_idServicio3'); ?>
+	</div>     
+        
+        <div class="row">
+		<?php echo $form->label($model,'Servicio_Final'); ?>
+		<?php echo $form->textField($model,'Servicio_Final'); ?>
+	</div>
+        
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search'); ?>
 	</div>

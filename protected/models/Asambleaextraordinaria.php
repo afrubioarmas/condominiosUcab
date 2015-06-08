@@ -36,11 +36,11 @@ class Asambleaextraordinaria extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('Fecha, Motivo, Propuesta, TrabajadorEmpresa_Cedula', 'required'),
-			array('TrabajadorEmpresa_Cedula', 'numerical', 'integerOnly'=>true),
+			array('TrabajadorEmpresa_Cedula,llamado', 'numerical', 'integerOnly'=>true),
 			array('Motivo, Propuesta', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idAsambleaExtraordinaria, Fecha, Motivo, Propuesta, TrabajadorEmpresa_Cedula', 'safe', 'on'=>'search'),
+			array('idAsambleaExtraordinaria, Fecha, Motivo, Propuesta, TrabajadorEmpresa_Cedula, llamado', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -71,6 +71,7 @@ class Asambleaextraordinaria extends CActiveRecord
 			'Motivo' => 'Motivo',
 			'Propuesta' => 'Propuesta',
 			'TrabajadorEmpresa_Cedula' => 'Trabajador Empresa Cedula',
+			'llamado' => 'Llamado',
 		);
 	}
 
@@ -97,6 +98,7 @@ class Asambleaextraordinaria extends CActiveRecord
 		$criteria->compare('Motivo',$this->Motivo,true);
 		$criteria->compare('Propuesta',$this->Propuesta,true);
 		$criteria->compare('TrabajadorEmpresa_Cedula',$this->TrabajadorEmpresa_Cedula);
+		$criteria->compare('llamado',$this->llamado);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -70,8 +70,15 @@ class InspeccionmantenimientoController extends Controller
 		if(isset($_POST['Inspeccionmantenimiento']))
 		{
 			$model->attributes=$_POST['Inspeccionmantenimiento'];
-			if($model->save())
+			if($model->save()){
+                                if($model->Mantenimiento==1){
+                                    $transaccion = new transaccion;
+                                    $transaccion->
+                                    
+                                }
+                            
 				$this->redirect(array('view','id'=>$model->idInspeccionMantenimiento));
+                        }
 		}
                 
                 $sq = "SELECT a.idAreacomun, a.Edificio_RIF, a.Descripcion,e.nombre

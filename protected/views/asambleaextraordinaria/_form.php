@@ -59,6 +59,12 @@
 		<?php echo $form->dropDownList($model,'TrabajadorEmpresa_Cedula',array(0 => 'Selecciona Trabajador')+$trabajadores); ?>
 		<?php echo $form->error($model,'TrabajadorEmpresa_Cedula'); ?>
 	</div>
+        
+        <div class="row">
+		<?php echo $form->labelEx($model,'llamado'); ?>
+		<?php echo $form->textField($model,'llamado'); ?>
+		<?php echo $form->error($model,'llamado'); ?>
+	</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

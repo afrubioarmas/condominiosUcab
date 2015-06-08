@@ -71,6 +71,8 @@ class AsambleaextraordinariaController extends Controller
 		{
 			$model->attributes=$_POST['Asambleaextraordinaria'];
 			if($model->save())
+                                if($model->Motivo=='Trabajo')
+                                    $this->redirect(array('/trabajo/create'));
 				$this->redirect(array('view','id'=>$model->idAsambleaExtraordinaria));
 		}
 

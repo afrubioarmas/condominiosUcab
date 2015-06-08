@@ -30,6 +30,9 @@ $this->menu=array(
 		'AsambleaExtraordinaria_idAsambleaExtraordinaria',
 		'CartaConsulta_idCartaConsulta',
 		'Servicio_idServicio',
-		'Servicio_Proveedor_RIF',
+		'Servicio_idServicio2',
+		'Servicio_idServicio3',
+		'Servicio_Final',
+		
 	),
 )); ?>

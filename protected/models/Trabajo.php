@@ -39,11 +39,11 @@ class Trabajo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('Monto, Servicio_idServicio, Servicio_Proveedor_RIF', 'required'),
-			array('Monto, Aprobado, AltoValor, PagoParcial, Mejora, AsambleaExtraordinaria_idAsambleaExtraordinaria, CartaConsulta_idCartaConsulta, Servicio_idServicio, Servicio_Proveedor_RIF', 'numerical', 'integerOnly'=>true),
+			array('Monto, Servicio_idServicio, Servicio_idServicio2,Servicio_idServicio3', 'required'),
+			array('Monto, Aprobado, AltoValor, PagoParcial, Mejora, AsambleaExtraordinaria_idAsambleaExtraordinaria, CartaConsulta_idCartaConsulta, Servicio_idServicio, Servicio_idServicio2, Servicio_idServicio3, Servicio_Final', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('idTrabajo, Monto, Aprobado, AltoValor, PagoParcial, Mejora, AsambleaExtraordinaria_idAsambleaExtraordinaria, CartaConsulta_idCartaConsulta, Servicio_idServicio, Servicio_Proveedor_RIF', 'safe', 'on'=>'search'),
+			array('idTrabajo, Monto, Aprobado, AltoValor, PagoParcial, Mejora, AsambleaExtraordinaria_idAsambleaExtraordinaria, CartaConsulta_idCartaConsulta, Servicio_idServicio, Servicio_idServicio2, Servicio_idServicio3, Servicio_Final', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -77,7 +77,9 @@ class Trabajo extends CActiveRecord
 			'AsambleaExtraordinaria_idAsambleaExtraordinaria' => 'Asamblea Extraordinaria Id Asamblea Extraordinaria',
 			'CartaConsulta_idCartaConsulta' => 'Carta Consulta Id Carta Consulta',
 			'Servicio_idServicio' => 'Servicio Id Servicio',
-			'Servicio_Proveedor_RIF' => 'Servicio Proveedor Rif',
+			'Servicio_idServicio2' => 'Servicio Id Servicio 2',
+			'Servicio_idServicio3' => 'Servicio Id Servicio 3',
+			'Servicio_Final' => 'Servicio Final',
 		);
 	}
 
@@ -108,7 +110,9 @@ class Trabajo extends CActiveRecord
 		$criteria->compare('AsambleaExtraordinaria_idAsambleaExtraordinaria',$this->AsambleaExtraordinaria_idAsambleaExtraordinaria);
 		$criteria->compare('CartaConsulta_idCartaConsulta',$this->CartaConsulta_idCartaConsulta);
 		$criteria->compare('Servicio_idServicio',$this->Servicio_idServicio);
-		$criteria->compare('Servicio_Proveedor_RIF',$this->Servicio_Proveedor_RIF);
+		$criteria->compare('Servicio_idServicio2',$this->Servicio_idServicio2);
+		$criteria->compare('Servicio_idServicio3',$this->Servicio_idServicio3);
+		$criteria->compare('Servicio_Final',$this->Servicio_Final);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -43,10 +43,7 @@
 	<?php echo CHtml::encode($data->Servicio_idServicio); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('Servicio_Proveedor_RIF')); ?>:</b>
-	<?php echo CHtml::encode($data->Servicio_Proveedor_RIF); ?>
-	<br />
-
+	
 	*/ ?>
 
 </div>

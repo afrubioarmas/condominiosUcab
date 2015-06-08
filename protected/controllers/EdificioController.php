@@ -121,26 +121,46 @@ class EdificioController extends Controller
                                 $value++;
                             }
                             
+                            $juntacondominio = new Juntacondominio;
+                            $juntacondominio->Edificio_RIF=$model->RIF;
+                            $juntacondominio->save();
+                            /*
+                            $actareunion= new actareunion;
+                            
+                            
+                            $actareunion->fecha=strtotime("+7 day");
+                            $actareunion->tipo='Reunion Inicial';
+                            $actareunion->motivo='Escojer parametros de edificio';
+                            $actareunion->llamado=1;
+                            $actareunion->Edificio_RIF=$model->RIF;
+                            $actareunion->Oficina_idOficina=
+                            $actareunion->JuntaCondominio_idJuntaCondominio
+                            $actareunion->TrabajadorEmpresa_Cedula
+                            
+                        */
                         
-                        
-                           $this->redirect(array('view','id'=>$model->RIF));
+                           $this->redirect(array('/actareunion/create'));
                         
 				
 		}
-
                 
-                $sq = "SELECT l.idLugar, l.nombre, l.tipo 
-                    FROM lugar l
-                    ORDER BY l.nombre ASC";
+                
+                
+                $sq = "SELECT m.idLugar, p.nombre, m.Nombre
+                    FROM lugar p
+                    JOIN lugar m ON p.idLugar = m.Lugar_idLugar
+                    WHERE m.idLugar > 361
+                    ORDER BY p.nombre,m.Nombre ASC";
                 $co = Yii::app()->db->createCommand($sq);
                 
                 $data3= $co->queryAll();   
-                //var_dump($data);die;
+                //var_dump($data3);die;
                 foreach ($data3 as $value) {
-                    $aux[$value['idLugar']] = $value['nombre'].' -> '.$value['tipo'];
+                    
+                    $aux[$value['idLugar']] = $value['nombre'].' -> '.$value['Nombre'];
                 }
                 $data3 = $aux;
-                //var_dump($data);die;
+                //var_dump($data3);die;
                 
                 
                 
