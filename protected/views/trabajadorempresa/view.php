@@ -30,3 +30,7 @@ $this->menu=array(
 		'Oficina_idOficina',
 	),
 )); ?>
+
+<br><br><br><br>
+<input type="button" onclick="location.href='<?php echo Yii::app()->getBaseUrl(); ?>/pagosprogramados/realizarpagosprogramados/<?php echo $model->Cedula ?>'" value='Realizar Pagos Programados'>
+

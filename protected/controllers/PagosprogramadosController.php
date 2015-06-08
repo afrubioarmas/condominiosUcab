@@ -28,7 +28,7 @@ class PagosprogramadosController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','realizarpagosprogramados'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -196,5 +196,40 @@ class PagosprogramadosController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+	}
+        
+        public function actionRealizarpagosprogramados($id)
+	{
+		$sq = "SELECT e.RIF,e.TrabajadorEmpresa_Cedula, t.Cedula,p.Edificio_RIF,p.Descripcion,p.MontoPorApartamento,p.idPagosprogramados
+                    FROM edificio e
+                    JOIN trabajadorempresa t ON e.TrabajadorEmpresa_Cedula = t.Cedula
+                    JOIN pagosprogramados p ON p.Edificio_RIF = e.RIF
+                    WHERE e.TrabajadorEmpresa_Cedula =".$id."
+                    ORDER BY e.RIF ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $edificios= $co->queryAll();   
+                //var_dump($edificios);die;
+                foreach ($edificios as $value) {
+                    $transaccion = new transaccion;
+                    $transaccion->Monto = $value['MontoPorApartamento']; 
+                    $transaccion->Fecha = date('Y-m-d H:i:s');
+                    $transaccion->Aprobado=1;
+                    $transaccion->Descripcion = $value['Descripcion']; 
+                    $transaccion->Ingreso = 0;
+                    $transaccion->TDC_NumeroTDC=0;
+                    $transaccion->Transferencia_idTransferencia=1;
+                    $transaccion->Efectivo_idEfectivo=1;
+                    $transaccion->Cheque_numeroCheque=1;
+                    $transaccion->Fondo_idFondo=1;
+                    $transaccion->PagosProgramados_idPagosProgramados=$value['idPagosprogramados'];
+                    $transaccion->Edificio_RIF=$value['RIF'];
+                    $transaccion->Propietario_Cedula=0;
+                    $transaccion->Trabajo_idTrabajo=0;
+                    $transaccion->save();
+                    
+                    
+                }
+
 	}
 }

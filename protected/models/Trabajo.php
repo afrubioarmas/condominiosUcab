@@ -40,7 +40,7 @@ class Trabajo extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('Monto, Servicio_idServicio, Servicio_idServicio2,Servicio_idServicio3', 'required'),
-			array('Monto, Aprobado, AltoValor, PagoParcial, Mejora, AsambleaExtraordinaria_idAsambleaExtraordinaria, CartaConsulta_idCartaConsulta, Servicio_idServicio, Servicio_idServicio2, Servicio_idServicio3, Servicio_Final', 'numerical', 'integerOnly'=>true),
+			array('Monto, Aprobado, AltoValor, PagoParcial, Mejora, AsambleaExtraordinaria_idAsambleaExtraordinaria, CartaConsulta_idCartaConsulta, Servicio_idServicio, Servicio_idServicio2, Servicio_idServicio3, Servicio_Final, Edificio_RIF', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('idTrabajo, Monto, Aprobado, AltoValor, PagoParcial, Mejora, AsambleaExtraordinaria_idAsambleaExtraordinaria, CartaConsulta_idCartaConsulta, Servicio_idServicio, Servicio_idServicio2, Servicio_idServicio3, Servicio_Final', 'safe', 'on'=>'search'),
@@ -80,6 +80,7 @@ class Trabajo extends CActiveRecord
 			'Servicio_idServicio2' => 'Servicio Id Servicio 2',
 			'Servicio_idServicio3' => 'Servicio Id Servicio 3',
 			'Servicio_Final' => 'Servicio Final',
+			'Edificio_RIF' => 'Edificio_RIF Final',
 		);
 	}
 
@@ -113,6 +114,7 @@ class Trabajo extends CActiveRecord
 		$criteria->compare('Servicio_idServicio2',$this->Servicio_idServicio2);
 		$criteria->compare('Servicio_idServicio3',$this->Servicio_idServicio3);
 		$criteria->compare('Servicio_Final',$this->Servicio_Final);
+		$criteria->compare('Edificio_RIF',$this->Edificio_RIF);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

@@ -87,11 +87,26 @@ class OficinaController extends Controller
                                     $empresa = $aux2;
                                     //var_dump($empresa);die;
                 
+                 $sq1 = "SELECT m.idLugar, p.nombre, m.Nombre
+                    FROM lugar p
+                    JOIN lugar m ON p.idLugar = m.Lugar_idLugar
+                    WHERE m.idLugar > 361
+                    ORDER BY p.nombre,m.Nombre ASC";
+                $com = Yii::app()->db->createCommand($sq1);
                 
+                $lugar = $com->queryAll();   
+                ///var_dump($data);die;
+               foreach ($lugar as $value) {
+                    
+                    $aux[$value['idLugar']] = $value['nombre'].' -> '.$value['Nombre'];
+                }
+                $lugar = $aux;
+                //var_dump($lugares);die;
 
 		$this->render('create',array(
 			'model'=>$model,
                         'empresa'=>$empresa,
+                        'lugar'=>$lugar,
 		));
                 
                 
@@ -129,9 +144,26 @@ class OficinaController extends Controller
                                     $empresa = $aux2;
                                     //var_dump($trabajador);die;
 
-		$this->render('update',array(
+                                    
+                $sq1 = "SELECT m.idLugar, p.nombre, m.Nombre
+                    FROM lugar p
+                    JOIN lugar m ON p.idLugar = m.Lugar_idLugar
+                    WHERE m.idLugar > 361
+                    ORDER BY p.nombre,m.Nombre ASC";
+                $com = Yii::app()->db->createCommand($sq1);
+                
+                $lugar = $com->queryAll();   
+                ///var_dump($data);die;
+                 foreach ($lugar as $value) {
+                    
+                    $aux[$value['idLugar']] = $value['nombre'].' -> '.$value['Nombre'];
+                }
+                $lugar = $aux;
+                //var_dump($lugares);die;
+		$this->render('create',array(
 			'model'=>$model,
                         'empresa'=>$empresa,
+                        'lugar'=>$lugar,
 		));
 	}
 
