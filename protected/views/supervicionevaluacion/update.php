@@ -18,4 +18,4 @@ $this->menu=array(
 
 <h1>Update Supervicionevaluacion <?php echo $model->idSupervicionEvaluacion; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'trabajadoredificio'=>$trabajadoredificio,'trabajadores'=>$trabajadores)); ?>

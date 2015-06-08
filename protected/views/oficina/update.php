@@ -18,4 +18,4 @@ $this->menu=array(
 
 <h1>Update Oficina <?php echo $model->idOficina; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model,'empresa'=>$empresa)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'empresa'=>$empresa,'lugar'=>$lugar)); ?>
