@@ -27,25 +27,42 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Descripcion'); ?>
-		<?php echo $form->textField($model,'Descripcion',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->dropDownList($model,'Descripcion', array(NULL =>'Seleccione Tipo','evaluacion' =>'evaluacion')); ?>
 		<?php echo $form->error($model,'Descripcion'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Fecha'); ?>
-		<?php echo $form->textField($model,'Fecha'); ?>
+		<?php
+			$this->widget ('zii.widgets.jui.CJuiDatePicker',  
+				array (
+					'model'=>$model,
+					'attribute'=>'Fecha',
+					'language' => 'es',
+					'options'=>array (
+						'dateFormat'=>'yy-mm-dd',
+						'changeMonth'=>'true', 
+                                                'changeYear'=>'true', 
+                                                'yearRange'=>'2015:2050', 
+  						'constrainInput'=>'false',
+						'duration'=>'fast',
+						'showAnim'=>'slide',
+					),  
+				)   
+			);
+		?>
 		<?php echo $form->error($model,'Fecha'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'TrabajadorEdificio_Cedula'); ?>
-		<?php echo $form->textField($model,'TrabajadorEdificio_Cedula'); ?>
+		<?php echo $form->dropDownList($model,'TrabajadorEdificio_Cedula',array(NULL => 'Selecciona trabajador')+$trabajadoredificio); ?>
 		<?php echo $form->error($model,'TrabajadorEdificio_Cedula'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'TrabajadorEmpresa_Cedula'); ?>
-		<?php echo $form->textField($model,'TrabajadorEmpresa_Cedula'); ?>
+		<?php echo $form->dropDownList($model,'TrabajadorEmpresa_Cedula',array(NULL => 'Selecciona trabajador')+$trabajadores); ?>
 		<?php echo $form->error($model,'TrabajadorEmpresa_Cedula'); ?>
 	</div>
 

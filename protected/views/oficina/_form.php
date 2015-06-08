@@ -21,7 +21,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Lugar_idLugar'); ?>
-		<?php echo $form->textField($model,'Lugar_idLugar'); ?>
+		<?php echo $form->dropDownList($model,'Lugar_idLugar',array(NULL => 'Selecciona Lugar')+$lugar); ?>
 		<?php echo $form->error($model,'Lugar_idLugar'); ?>
 	</div>
 
