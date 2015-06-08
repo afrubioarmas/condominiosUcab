@@ -27,3 +27,8 @@ $this->menu=array(
 		'ClaveLogueo',
 	),
 )); ?>
+
+<br><br><br><br>
+<input type="button" onclick="location.href='<?php echo Yii::app()->getBaseUrl(); ?>/propietario/generarresumen/<?php echo $model->Cedula ?>'" value='ver pdf de pago becerra'>
+
+

@@ -28,7 +28,7 @@ class PropietarioController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','generarResumen'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -169,5 +169,301 @@ class PropietarioController extends Controller
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
+                
 	}
+ 
+        
+        
+        
+        
+         public function actionGenerarResumen($id){
+               
+                
+                //VAR_DUMP($aux,$aux1);DIE;
+                
+                $pdf = Yii::createComponent('application.extensions.tcpdf.ETcPdf', 
+                                            'P', 'cm', 'A4', true, 'UTF-8');
+                
+                $pdf->setPrintHeader(true);
+                $pdf->setPrintFooter(false);
+                $pdf->AddPage( 'P', 'LETTER' );
+                $bMargin = $pdf->getBreakMargin();
+                // get current auto-page-break mode
+                $auto_page_break = $pdf->getAutoPageBreak();
+                // disable auto-page-break
+                $pdf->SetAutoPageBreak(false, 0);
+                // set bacground image
+                //$pdf->SetAutoPageBreak(TRUE, 5.5);
+                
+                $img_file = K_PATH_IMAGES.'factura.jpg';
+                //var_dump($img_file);die;
+                //$pdf->Image($img_file, 0, 0, 210, 297, '', '', '', false, 72, '', false, false, 0);
+                $pdf->Image($img_file, 0, 0, 21, 27, '', '', '', false, 72, '', false, false, 0);
+                
+                //$pdf->SetMargins(PDF_MARGIN_LEFT, 0, PDF_MARGIN_RIGHT);
+                //$pdf->SetHeaderMargin(0);
+                //$pdf->SetFooterMargin(0);
+
+                //$pdf->setCellMargins(0, 0, 1, 1);
+                //set auto page breaks
+                $pdf->SetPageMark();
+
+                //set image scale factor
+                //$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+                // restore auto-page-break status
+                //$pdf->SetAutoPageBreak($auto_page_break, $bMargin);
+                // set the starting point for the page content
+                //$pdf->setPageMark();
+                            /*$html = '
+            <!-- EXAMPLE OF CSS STYLE -->
+            <style>
+                .footer{
+                        position: fixed;
+                        bottom: 0;
+                        width: 100%;
+                }
+                td {     
+                    //border: 1px solid black;
+                    color: #666666;
+                }
+                td.second {
+                    border: 1px solid green;
+                }
+                .clave{
+                    font-weight:bold;
+                }
+            </style>
+            <table cellpadding="0" cellspacing="0" style="margin-top:10;">
+                
+                <tr>
+                    <td width="100" height="65"></td>
+                </tr>
+                 <tr>
+                    <td width="100" height="20"></td>
+                    
+                    <td width="460" height="20" style="text-align:right;padding-top:60px;">Resumen de compra N°: <b>'.$operacion->id.'</b></td>
+                    
+                </tr>
+                <tr>
+                    <td width="560" height="20">
+                         <strong style="font-size:20;">Informacion Fiscal:</strong>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td height="15">
+                    </td>
+                </tr>
+                
+                <tr style="font-size:15;" height="40">
+                    <td width="10" height="20">
+                        
+                    </td>
+                    <td width="550" height="20">
+                        RIF: '.$info_fiscal['rif'].'.
+                    </td>
+                    
+                </tr>
+                <tr style="font-size:15;" height="40">
+                    <td width="10" height="20">
+                        
+                    </td>
+                    <td width="550" height="20">
+                        Nombre: '.$info_fiscal['nombre'].'.
+                    </td>
+                    
+                </tr>
+                <tr style="font-size:15;" height="40">
+                    <td width="10" height="20">
+                        
+                    </td>
+                    <td width="550" height="20">
+                        Direccion: '.$info_fiscal['direccion'].'.
+                    </td>
+                    
+                </tr>
+                <tr style="font-size:15;" height="40">
+                    <td width="10" height="20">
+                        
+                    </td>
+                    <td width="550" height="20">
+                        Telefono: '.$info_fiscal['telefono'].'.
+                    </td>
+                    
+                </tr>
+                
+                <tr>
+                    <td height="20">
+                    </td>
+                </tr>
+                ';
+                            
+                if($aux){            
+                $html.='<tr>
+                    <td width="560" height="20">
+                         <strong style="font-size:20;">Servicios:</strong>
+                    </td>
+                    
+                </tr> ';
+                
+                
+                            
+                foreach($aux as $add){
+                    $detalle='
+                              <tr>
+                                    <td height="10">
+                                    </td>
+                              </tr>  
+                              <tr>
+                                    <td height="20" width="60">
+                                    </td>
+                                    <td width="500" height="20" >
+                                        <strong>'.$add[0]->asociado->nombre.'</strong>
+                                    </td>
+                              </tr>
+                              ';
+                    foreach($add as $add2){
+                        $detalle2='<tr>
+                                        <td height="20" width="100">
+                                        </td>
+                                        <td width="230" height="20" >
+                                            '.$add2->costos->nombre.'
+                                        </td>
+                                        <td width="230" height="20" style="text-align:right;">
+                                            '.$add2->costos->valor_default.' Bs. 
+                                        </td>
+                                   </tr>';
+                        $detalle.=$detalle2;
+                    }
+                    
+                    $html.=$detalle;
+                }  
+                }
+                $subtotal=$operacion->valor-$operacion->iva+$operacion->contribuyente;
+                $iva=$operacion->iva;
+                
+                if($aux1){
+                $html=$html.'   
+                                <tr>
+                                    <td height="20">
+                                    </td>
+                              </tr>
+                                <tr>
+                                    <td width="560" height="20">
+                                         <strong style="font-size:20;">Contratos:</strong>
+                                    </td>
+                                 </tr>';
+                
+                
+               
+                
+               
+                foreach($aux1 as $add){
+                    $detalle='
+                            <tr>
+                                <td height="10">
+                                </td>
+                            </tr>
+                              <tr>
+                                    <td height="20" width="60">
+                                    </td>
+                                    <td width="500" height="20" >
+                                        <strong>'.$add[0]->asociado->nombre.'</strong>
+                                    </td>
+                              </tr>
+                              ';
+                    
+                    
+                    
+                    foreach($add as $add2){
+                        $detalle2='<tr>
+                            
+                                        <td height="20" width="100">
+                                        </td>
+                                        <td width="230" height="20" >
+                                            '.$add2->costos->nombre.'
+                                        </td>
+                                        <td width="230" height="20" style="text-align:right;">
+                                            '.$add2->costos->valor_default.' Bs. 
+                                        </td>
+                                   </tr>';
+                        $detalle.=$detalle2;
+                    }
+                    
+                    $html.=$detalle;
+                    
+                }
+                }
+                $html=$html.'</table>';
+                
+                $totalizar='    
+                                <table cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td height="20">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="20" width="500" style="text-align:right;">
+                                            <span>Sub-Total:</span>
+                                        </td>
+                                        <td height="20" width="60" style="text-align:right;">
+                                           '.$subtotal.' Bs.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="20" width="500" style="text-align:right;">
+                                            <span style="text-align:right;">IVA:</span>
+                                        </td>
+                                        <td height="20" width="60" style="text-align:right;">
+                                           '.$iva.' Bs.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="20" width="500" style="text-align:right;">
+                                            <span style="text-align:right;">Retencion:</span>
+                                        </td>
+                                        <td height="20" width="60" style="text-align:right;">
+                                           -'.$operacion->contribuyente.' Bs.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td height="20" width="500" style="text-align:right;">
+                                            <span style="text-align:right;">Total:</span>
+                                        </td>
+                                        <td height="20" width="60" style="text-align:right;">
+                                           '.$operacion->valor.' Bs.
+                                        </td>
+                                    </tr>
+                                    
+
+                                </table>
+                                    
+';
+                        
+                $html.=$totalizar;
+                
+                
+                */
+                $html='hola mundo';
+                
+                $pdf->SetFont("times", "BI", 20);
+                
+                $pdf->writeHTML($html, true, false, true, false, '');
+                //$pdf->Cell(0,10,"Example 002",1,1,'C');
+                $pdf->Output("resumencompra_".$id.".pdf", "D");
+                    
+                /*
+		$this->render('print',array(
+			'base_url'=>$base_url,
+			'model'=>$cupon,
+		));*/
+            
+        }
+
+        
+        
+        
 }
+        
+               

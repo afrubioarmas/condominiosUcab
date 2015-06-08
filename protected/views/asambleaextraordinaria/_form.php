@@ -31,7 +31,7 @@
 						'dateFormat'=>'yy-mm-dd',
 						'changeMonth'=>'true', 
                                                 'changeYear'=>'true', 
-                                                'yearRange'=>'1920:2015', 
+                                                'yearRange'=>'2015:2040', 
   						'constrainInput'=>'false',
 						'duration'=>'fast',
 						'showAnim'=>'slide',
@@ -44,7 +44,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Motivo'); ?>
-		<?php echo $form->textField($model,'Motivo',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->dropDownList($model,'Motivo', array(NULL =>'Seleccione motivo','Trabajo' =>'Trabajo','Elecciones' =>'Elecciones','Otros'=>'Otros')); ?>
 		<?php echo $form->error($model,'Motivo'); ?>
 	</div>
 
