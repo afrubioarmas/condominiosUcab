@@ -33,7 +33,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Tipo'); ?>
-		<?php echo $form->dropDownList($model,'Tipo', array(0 =>'Seleccione Tipo de Edificio','Residencial' =>'Residencial','Vacacional' =>'Vacacional')); ?>
+		<?php echo $form->dropDownList($model,'Tipo', array(NULL =>'Seleccione Tipo de Edificio','Residencial' =>'Residencial','Vacacional' =>'Vacacional')); ?>
 		<?php echo $form->error($model,'Tipo'); ?>
 	</div>
 
@@ -63,13 +63,13 @@
         
 	<div class="row">
 		<?php echo $form->labelEx($model,'Lugar_idLugar'); ?>
-		<?php echo $form->dropDownList($model,'Lugar_idLugar',array(0 => 'Selecciona Lugar')+$data3); ?>
+		<?php echo $form->dropDownList($model,'Lugar_idLugar',array(NULL => 'Selecciona Lugar')+$data3); ?>
 		<?php echo $form->error($model,'Lugar_idLugar'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'TrabajadorEmpresa_Cedula'); ?>
-		<?php echo $form->dropDownList($model,'TrabajadorEmpresa_Cedula',array(0 => 'Selecciona Trabajador')+$trabajadores); ?>
+		<?php echo $form->dropDownList($model,'TrabajadorEmpresa_Cedula',array(NULL => 'Selecciona Trabajador')+$trabajadores); ?>
 		<?php echo $form->error($model,'TrabajadorEmpresa_Cedula'); ?>
 	</div>
         <?php if(isset($update)){}else{ ?>

@@ -81,6 +81,34 @@ class InspeccionmantenimientoController extends Controller
                         }
 		}
                 
+                
+                
+                $sq = "SELECT e.RIF, e.Nombre
+                    FROM edificio e
+                    ORDER BY e.Nombre ASC";
+                $co1 = Yii::app()->db->createCommand($sq);
+                
+                $edificios= $co1->queryAll();   
+                //var_dump($edificios);die;
+                foreach ($edificios as $value) {
+                    $aux[$value['RIF']] = $value['Nombre'];
+                }
+                $edificios = $aux;
+                //var_dump($edificios);die;
+                
+                 $sq = "SELECT t.Cedula, t.Nombre
+                                        FROM trabajadoredificio t
+                                        ORDER BY t.Cedula ASC";
+                                    $co1 = Yii::app()->db->createCommand($sq);
+
+                                    $trabajadoredificio= $co1->queryAll();   
+                                    //var_dump($trabajadoredificio);die;
+                                    foreach ($trabajadoredificio as $value) {
+                                        $aux2[$value['Cedula']] = $value['Nombre'];
+                                    }
+                                    $trabajadoredificio = $aux2;
+                                    //var_dump($trabajadorempresa);die;
+                
                 $sq = "SELECT a.idAreacomun, a.Edificio_RIF, a.Descripcion,e.nombre
                     FROM areacomun a
                     JOIN edificio e ON a.Edificio_RIF = e.RIF
@@ -89,16 +117,20 @@ class InspeccionmantenimientoController extends Controller
                 
                 $data3= $co->queryAll();   
                 //var_dump($data3);die;
+                
                 foreach ($data3 as $value) {
                     $aux[$value['idAreacomun']] = $value['nombre'].' --> '.$value['Descripcion'];
                 }
                 
                 $areascomun = $aux;
                 //var_dump($data3);die;
-                
+ 
 		$this->render('create',array(
 			'model'=>$model,
 			'areascomun'=>$areascomun,
+                        'trabajadoredificio'=>$trabajadoredificio,
+                    
+                    
 		));
 	}
 
@@ -121,8 +153,52 @@ class InspeccionmantenimientoController extends Controller
 				$this->redirect(array('view','id'=>$model->idInspeccionMantenimiento));
 		}
 
-		$this->render('update',array(
+		$sq = "SELECT e.RIF, e.Nombre
+                    FROM edificio e
+                    ORDER BY e.Nombre ASC";
+                $co1 = Yii::app()->db->createCommand($sq);
+                
+                $edificios= $co1->queryAll();   
+                //var_dump($edificios);die;
+                foreach ($edificios as $value) {
+                    $aux[$value['RIF']] = $value['Nombre'];
+                }
+                $edificios = $aux;
+                //var_dump($edificios);die;
+                
+                 $sq = "SELECT t.Cedula, t.Nombre
+                                        FROM $trabajadoredificio t
+                                        ORDER BY t.Cedula ASC";
+                                    $co1 = Yii::app()->db->createCommand($sq);
+
+                                    $trabajadoredificio= $co1->queryAll();   
+                                    //var_dump($trabajadoredificio);die;
+                                    foreach ($trabajadoredificio as $value) {
+                                        $aux2[$value['Cedula']] = $value['Nombre'];
+                                    }
+                                    $trabajadoredificio = $aux2;
+                                    //var_dump($trabajadoredificio);die;
+                
+                $sq = "SELECT a.idAreacomun, a.Edificio_RIF, a.Descripcion,e.nombre
+                    FROM areacomun a
+                    JOIN edificio e ON a.Edificio_RIF = e.RIF
+                    ORDER BY e.nombre ASC";
+                $co = Yii::app()->db->createCommand($sq);
+                
+                $data3= $co->queryAll();   
+                //var_dump($data3);die;
+                
+                foreach ($data3 as $value) {
+                    $aux[$value['idAreacomun']] = $value['nombre'].' --> '.$value['Descripcion'];
+                }
+                
+                $areascomun = $aux;
+                //var_dump($data3);die;
+ 
+		$this->render('create',array(
 			'model'=>$model,
+			'areascomun'=>$areascomun,
+                        'trabajadoredificio'=>$trabajadoredificio,
 		));
 	}
 

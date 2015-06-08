@@ -18,4 +18,4 @@ $this->menu=array(
 
 <h1>Update Inspeccionmantenimiento <?php echo $model->idInspeccionMantenimiento; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'areascomun'=>$areascomun,'trabajadoredificio'=>$trabajadoredificio)); ?>

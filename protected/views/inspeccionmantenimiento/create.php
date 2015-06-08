@@ -15,4 +15,4 @@ $this->menu=array(
 
 <h1>Create Inspeccionmantenimiento</h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model,'areascomun'=>$areascomun)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'areascomun'=>$areascomun,'trabajadoredificio'=>$trabajadoredificio)); ?>

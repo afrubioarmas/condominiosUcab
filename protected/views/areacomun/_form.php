@@ -27,7 +27,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'Edificio_RIF'); ?>
-		<?php echo $form->dropDownList($model,'Edificio_RIF',array(0 => 'selecciona edificio')+$data3); ?>
+		<?php echo $form->dropDownList($model,'Edificio_RIF',array(NULL => 'selecciona edificio')+$data3); ?>
 		<?php echo $form->error($model,'Edificio_RIF'); ?>
 	</div>
 

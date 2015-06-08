@@ -85,7 +85,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'JuntaCondominio_idJuntaCondominio'); ?>
-		<?php echo $form->dropDownList($model,'JuntaCondominio_idJuntaCondominio',array(0 => 'Selecciona Junta de Condominio por Edificio')+$juntascondominioEdificio); ?>
+		<?php echo $form->dropDownList($model,'JuntaCondominio_idJuntaCondominio',array(NULL => 'Selecciona Junta de Condominio por Edificio')+$juntascondominioEdificio); ?>
 		<?php echo $form->error($model,'JuntaCondominio_idJuntaCondominio'); ?>
 	</div>
 

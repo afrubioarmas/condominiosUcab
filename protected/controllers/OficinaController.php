@@ -74,10 +74,24 @@ class OficinaController extends Controller
 				$this->redirect(array('view','id'=>$model->idOficina));
 		}
                 
+                  $sq = "SELECT e.RIF ,e.Nombre
+                                        FROM empresa e
+                                        ORDER BY e.Nombre ASC";
+                                    $co = Yii::app()->db->createCommand($sq);
+
+                                    $empresa= $co->queryAll();   
+                                    //var_dump($empresa);die;
+                                    foreach ($empresa as $value) {
+                                        $aux2[$value['RIF']] = $value['Nombre'];
+                                    }
+                                    $empresa = $aux2;
+                                    //var_dump($empresa);die;
+                
                 
 
 		$this->render('create',array(
 			'model'=>$model,
+                        'empresa'=>$empresa,
 		));
                 
                 
@@ -102,9 +116,22 @@ class OficinaController extends Controller
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->idOficina));
 		}
+                 $sq = "SELECT e.RIF
+                                        FROM empresa e
+                                        ORDER BY e.Nombre ASC";
+                                    $co = Yii::app()->db->createCommand($sq);
+
+                                    $empresa= $co->queryAll();   
+                                    //var_dump($trabajador);die;
+                                    foreach ($empresa as $value) {
+                                        $aux2[$value['RIF']] = $value['Nombre'];
+                                    }
+                                    $empresa = $aux2;
+                                    //var_dump($trabajador);die;
 
 		$this->render('update',array(
 			'model'=>$model,
+                        'empresa'=>$empresa,
 		));
 	}
 
